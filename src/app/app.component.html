@@ -1,0 +1,73 @@
+
+<div style="text-align:center">
+  <h1>
+    Welcome Ms. {{ name }}
+
+  </h1> 
+</div>
+<div>
+  <h1 [style.color] = "colorname">
+    welcome to {{ title }} {{colorname}}!
+ </h1>
+  <input type="button" value="click me" (click)="buttonfn();"/>
+  <input type="password" [(ngModel)]="passVal" (input)="validatepass();"/>
+  <span [style.color]="passColor">{{passStrength}}</span>
+</div>
+  <div *ngIf="age>=18">eligible to vote</div>
+  <div *ngIf="age < 18">not eligible to vote</div>
+<table>
+  <tr><td>Name</td><td>Price</td><td>Quantity</td><td>Total</td></tr>
+  <tr *ngFor="let item of billArr">
+    <td>{{item.name}}</td>
+    <td>{{billObj[item.name]}}</td>
+    <td>{{item.quantity}}</td>
+    <td>{{item.quantity * billObj[item.name]}}</td>
+  </tr>
+</table>
+
+<select [(ngModel)]="country">
+  <option *ngFor="let item of countryObj | keyvalue">
+      {{item.key}}
+  </option>
+</select>
+
+<select [(ngModel)]="state">
+   <option *ngFor="let item of countryObj[country]">
+      {{item}}
+  </option>
+</select>
+<div> i am calling pipe{{20 | multiplier:30}}</div>
+<ul>
+   <li>
+    <a [routerLink]="['/product']">Product</a>
+</li>
+<li>
+    <a [routerLink]="['/inventory']">Inventory</a>
+</li>
+</ul>
+<select [(ngModel)]="blogNo" (change)="changeUrl();">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</select>
+
+<router-outlet></router-outlet>
+
+<table>
+    <tr><td>Id</td><td>First Name</td><td>Last Name</td><td>Avatar</td></tr>
+    <tr *ngFor="let item of response">
+      <td>{{ item.id }}</td>
+      <td>{{ item.first_name }}</td>
+      <td>{{item.last_name}}</td>
+      <td><img [src]="item.avatar"/></td>
+    </tr>
+  </table>
+  <input type="text" value="name"/> name
+  <input type="text" value="job"/> job
+  <input type="button" value="submit" (click)="postrequest();">
+
+
+  <app-person
+    [employee]="empObj"
+    (employeeEvent)="updateParent($event);">
+  </app-person>
