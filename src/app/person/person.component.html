@@ -1,0 +1,7 @@
+<p>
+  person works!
+  {{employee.fName}} {{employee.lName}}
+  <input type="text" [value]="employee.fName" (input)="updateObj($event.target.value,'fName');"/>
+  <input type="text" [value]="employee.lName" (input)="updateObj($event.target.value,'lName');"/>
+  <input type="button" value="click" (click)="update();"/>
+</p>
